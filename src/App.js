@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Todos from "./components/Todos";
 import Header from "./components/layout/Header";
 import AddTodo from "./components/AddTodo";
+import About from "./components/pages/About";
 import uuid from 'uuid';
 
 import "./App.css";
@@ -13,17 +14,17 @@ class App extends Component {
 		todos: [
 			{
 				id: uuid.v4(),
-				title: "Take out the trash",
+				title: "Here is a demo task",
 				completed: false,
 			},
 			{
 				id: uuid.v4(),
-				title: "Dinner with mrs",
+				title: "Here's another!",
 				completed: false,
 			},
 			{
 				id: uuid.v4(),
-				title: "Meeting with boss",
+				title: "Okay, last one I promise",
 				completed: false,
 			},
 		],
@@ -61,7 +62,7 @@ class App extends Component {
         <div className="App">
           <div className="container">
             <Header />
-            <Route path="/" render={props => (
+            <Route exact path="/" render={props => (
               <React.Fragment>
                 <AddTodo addTodo={this.addTodo} />
                 <Todos
@@ -71,6 +72,8 @@ class App extends Component {
                 />
               </React.Fragment>
             )} />
+            <Route path="/about" component={About}
+            />
           </div>
         </div>
       </Router>
